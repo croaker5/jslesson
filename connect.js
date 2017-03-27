@@ -49,5 +49,17 @@ app.use(function(req,res,next){
     	next();
     }
 });
+app.use(function(req,res,next){
+    if(req.url === '/news?type=1&id=1'){
+        send(getNews(1));                      
+
+    }else if(req.url === '/news?type=1&id=2'){
+        send(getNews(2));
+    }else if(req.url === '/news?type=1&id=3'){
+        send(getNews(3));
+    }else{
+        send('<h1>文章不存在！</h1>');
+    }
+});
 
 app.listen(3001);//相当于http模块的createServer函数，自动创建服务器并监听3001端口
